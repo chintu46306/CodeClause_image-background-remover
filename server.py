@@ -4,6 +4,7 @@ from rembg import remove
 from PIL import Image
 import io
 import uuid
+import os
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"*": {"origins": "*"}})
@@ -41,4 +42,4 @@ def upload():
     return jsonify({'output_url': output_url})
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False, port=os.getenv("PORT", default=5000), host='0.0.0.0')
